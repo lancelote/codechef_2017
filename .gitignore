@@ -100,3 +100,6 @@ include/
 
 # mypy
 .mypy_cache/
+
+# PyCharm settings
+.idea/
