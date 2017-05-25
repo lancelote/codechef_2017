@@ -14,7 +14,7 @@ def is_valid_line(line, length):
     return True
 
 
-if __name__ == '__main__':
+def main():
     n = int(input())
     while n > 0:
         length = input()
@@ -23,3 +23,7 @@ if __name__ == '__main__':
         else:
             print("no")
         n -= 1
+
+
+if __name__ == '__main__':
+    main()
