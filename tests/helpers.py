@@ -5,20 +5,8 @@ from unittest.mock import patch
 
 @patch('builtins.input')
 @patch('sys.stdout', new=io.StringIO())
-def controlled_call(task, solution, mock_input):
-    """Run solution function with given task and grab standard output.
-
-    Args:
-        task: Task multi-line text.
-        solution: Solution function.
-        mock_input: Auto-provided patched input function.
-
-    Returns:
-        StdOut of the solution function call.
-
-    Raises:
-        ValueError: Input data doesn't match solution expectations.
-    """
+def call(task, solution, mock_input):
+    """Run solution function with given task and grab standard output."""
     input_chunks = task.split('\n')
     mock_input.side_effect = input_chunks
     try:
