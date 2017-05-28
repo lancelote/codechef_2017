@@ -17,6 +17,3 @@ EXAMPLES = (
 @pytest.mark.parametrize(*EXAMPLES)
 def test_returns_correct_result(args, expected):
     assert number_of_operations(*args) == expected
-
-
-# 0 1 2 3 2 1 0
