@@ -6,8 +6,8 @@ EXAMPLES = (
     ('args', 'expected'),
     [
         ((Snake(2, 1, 8, 1), Snake(11, 1, 7, 1)), True),
-        ((Snake(2, 1, 8, 1), Snake(11, 1, 9, 1)), True),
-        ((Snake(2, 1, 8, 1), Snake(3, 1, 3, -2)), True),
+        ((Snake(2, 1, 8, 1), Snake(11, 1, 9, 1)), False),
+        ((Snake(2, 1, 8, 1), Snake(3, 1, 3, -2)), False),
         ((Snake(2, 1, 8, 1), Snake(2, 1, 2, -2)), True),
     ]
 )
