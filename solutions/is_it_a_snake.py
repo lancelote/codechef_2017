@@ -13,6 +13,8 @@ class Position:
     def __str__(self):
         return 'Position(%d, %d)' % (self.x, self.y)
 
+    __repr__ = __str__
+
     def up(self):
         """Check if step up is allowed."""
         if self.y == 0:
@@ -63,12 +65,17 @@ class Position:
         return False
 
 
-def start_position(grid):
+def start_positions(grid):
     """Get the most left-top # sign coordinates."""
+    starts = []
+    found = False
     for x in range(len(grid[0])):
         for y in [0, 1]:
             if grid[y][x] == '#':
-                return Position(x, y, grid)
+                starts.append(Position(x, y, grid))
+                found = True
+        if found:
+            return starts
     raise ValueError('Grid has no # sign')
 
 
@@ -84,12 +91,15 @@ def count_segments(grid):
 
 def is_snake(grid):
     """Check if all segments are visited."""
-    steps = 1  # First segment already here
     segments = count_segments(grid)
-    position = start_position(grid)
-    while position.step():
-        steps += 1
-    return steps == segments
+    positions = start_positions(grid)
+    for position in positions:
+        steps = 1
+        while position.step():
+            steps += 1
+        if segments == steps:
+            return True
+    return False
 
 
 def main():

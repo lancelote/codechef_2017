@@ -1,18 +1,19 @@
 import pytest
 
-from solutions.is_it_a_snake import Position, start_position, count_segments
+from solutions.is_it_a_snake import Position, start_positions, count_segments
 
 
-@pytest.mark.parametrize('grid,start', [
-    (['.#.', '#.#'], (0, 1)),
-    (['#.#', '.#.'], (0, 0)),
-    (['..#', '..#'], (2, 0)),
-    (['#..', '#..'], (0, 0)),
-    (['...', '..#'], (2, 1)),
-    (['..', '##'], (0, 1)),
+@pytest.mark.parametrize('grid,starts', [
+    (['.#.', '#.#'], [(0, 1)]),
+    (['#.#', '.#.'], [(0, 0)]),
+    (['..#', '..#'], [(2, 0), (2, 1)]),
+    (['#..', '#..'], [(0, 0), (0, 1)]),
+    (['...', '..#'], [(2, 1)]),
+    (['..', '##'], [(0, 1)]),
 ])
-def test_start_position(grid, start):
-    assert start_position(grid) == Position(*start, grid=grid)
+def test_start_position(grid, starts):
+    expected = [Position(*start, grid=grid) for start in starts]
+    assert start_positions(grid) == expected
 
 
 @pytest.mark.parametrize('grid,total', [
