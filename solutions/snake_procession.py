@@ -12,7 +12,7 @@ def is_valid_line(line):
     return complete_snake
 
 
-if __name__ == '__main__':
+def main():
     n = int(input())
     while n > 0:
         _ = input()
@@ -21,3 +21,7 @@ if __name__ == '__main__':
         else:
             print("Invalid")
         n -= 1
+
+
+if __name__ == '__main__':
+    main()
